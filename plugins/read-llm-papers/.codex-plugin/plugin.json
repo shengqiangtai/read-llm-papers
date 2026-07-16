@@ -1,0 +1,34 @@
+{
+  "name": "read-llm-papers",
+  "version": "0.1.0",
+  "description": "Evidence-grounded five-minute reading reports for frontier LLM papers.",
+  "author": {
+    "name": "shengqiangtai",
+    "url": "https://github.com/shengqiangtai"
+  },
+  "homepage": "https://github.com/shengqiangtai/read-llm-papers#readme",
+  "repository": "https://github.com/shengqiangtai/read-llm-papers",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "papers",
+    "llm",
+    "hugging-face",
+    "arxiv"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Read LLM Papers",
+    "shortDescription": "Evidence-grounded five-minute reports for frontier LLM papers",
+    "longDescription": "Triage Hugging Face Daily Papers, inspect full texts, figures, tables, experiments, and reproducibility, then produce concise critical reading reports.",
+    "developerName": "shengqiangtai",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": [
+      "Use Read LLM Papers to analyze this paper in an evidence-grounded five-minute report.",
+      "Use Read LLM Papers to triage today's Hugging Face Daily Papers."
+    ]
+  }
+}
