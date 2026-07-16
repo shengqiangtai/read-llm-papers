@@ -1,4 +1,4 @@
-# Read LLM Papers
+# Read LLM Papers Skill
 
 [中文说明](README.zh-CN.md)
 
@@ -19,7 +19,7 @@ An open-source Codex and ChatGPT skill that turns frontier LLM papers into conci
 Add this repository as a marketplace source:
 
 ```bash
-codex plugin marketplace add shengqiangtai/read-llm-papers
+codex plugin marketplace add shengqiangtai/read-llm-papers-skill
 ```
 
 Then open the plugin directory in the ChatGPT desktop app, choose the **Read LLM Papers** marketplace, and install the plugin.
@@ -29,9 +29,9 @@ Then open the plugin directory in the ChatGPT desktop app, choose the **Read LLM
 For a user-wide Codex installation:
 
 ```bash
-git clone https://github.com/shengqiangtai/read-llm-papers.git
+git clone https://github.com/shengqiangtai/read-llm-papers-skill.git
 mkdir -p "$HOME/.agents/skills"
-cp -R read-llm-papers/plugins/read-llm-papers/skills/read-llm-papers "$HOME/.agents/skills/"
+cp -R read-llm-papers-skill/plugins/read-llm-papers/skills/read-llm-papers "$HOME/.agents/skills/"
 ```
 
 For one repository, copy the same skill folder to `.agents/skills/read-llm-papers` inside that repository.
