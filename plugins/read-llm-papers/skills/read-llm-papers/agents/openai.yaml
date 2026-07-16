@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Paper Reader"
+  short_description: "Evidence-grounded five-minute reports for frontier LLM papers"
+  default_prompt: "Use $read-llm-papers to analyze this LLM paper as an evidence-grounded five-minute reading report."
