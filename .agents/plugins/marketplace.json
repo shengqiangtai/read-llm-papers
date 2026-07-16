@@ -1,0 +1,20 @@
+{
+  "name": "read-llm-papers",
+  "interface": {
+    "displayName": "Read LLM Papers"
+  },
+  "plugins": [
+    {
+      "name": "read-llm-papers",
+      "source": {
+        "source": "local",
+        "path": "./plugins/read-llm-papers"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
