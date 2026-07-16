@@ -1,7 +1,7 @@
 {
-  "name": "read-llm-papers",
+  "name": "read-llm-papers-skill",
   "interface": {
-    "displayName": "Read LLM Papers"
+    "displayName": "Read LLM Papers Skill"
   },
   "plugins": [
     {
