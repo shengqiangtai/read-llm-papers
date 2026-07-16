@@ -1,4 +1,4 @@
-# Read LLM Papers
+# Read LLM Papers Skill
 
 [English](README.md)
 
@@ -19,7 +19,7 @@
 先添加这个 GitHub 仓库：
 
 ```bash
-codex plugin marketplace add shengqiangtai/read-llm-papers
+codex plugin marketplace add shengqiangtai/read-llm-papers-skill
 ```
 
 然后在 ChatGPT 桌面端打开插件目录，选择 **Read LLM Papers**，完成安装。
@@ -29,9 +29,9 @@ codex plugin marketplace add shengqiangtai/read-llm-papers
 安装到个人 Codex 环境：
 
 ```bash
-git clone https://github.com/shengqiangtai/read-llm-papers.git
+git clone https://github.com/shengqiangtai/read-llm-papers-skill.git
 mkdir -p "$HOME/.agents/skills"
-cp -R read-llm-papers/plugins/read-llm-papers/skills/read-llm-papers "$HOME/.agents/skills/"
+cp -R read-llm-papers-skill/plugins/read-llm-papers/skills/read-llm-papers "$HOME/.agents/skills/"
 ```
 
 如果只想在某个项目中使用，可以把同一文件夹复制到该项目的 `.agents/skills/read-llm-papers`。
