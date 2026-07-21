@@ -73,6 +73,29 @@ $read-llm-papers 比较这两篇论文。先统一模型规模、训练数据、
 
 当来源允许时，关键结论会标注对应的章节、图、表、附录或官方仓库链接。
 
+## 仓库结构
+
+```text
+.agents/plugins/marketplace.json
+plugins/read-llm-papers/
+├── .codex-plugin/plugin.json
+└── skills/read-llm-papers/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    ├── references/
+    │   ├── comparison-contract.md
+    │   ├── deep-dive-contract.md
+    │   ├── evidence-rules.md
+    │   ├── example-report.md
+    │   ├── llm-paper-checklist.md
+    │   └── report-contract.md
+    └── scripts/
+        ├── fetch_daily_papers.py
+        └── render_pdf_pages.py
+```
+
+`SKILL.md` 只保留核心流程，具体报告规范和检查规则按需加载。两个辅助脚本分别用于读取 Hugging Face Daily Papers 的结构化数据，以及把指定 PDF 页面渲染成图片以便核对图表。
+
 ## 验证修改
 
 ```bash

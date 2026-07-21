@@ -4,6 +4,8 @@
 
 - Match title, authors, and identifier before analysis.
 - Record the inspected version and date. A later arXiv revision may differ from a conference version.
+- Check the official record for withdrawal, retraction, replacement, and errata notices. On arXiv, inspect the abstract-page status and version history. On OpenReview or a venue site, inspect the decision and author notices.
+- Put a material status warning near the top of the report. State the recorded reason and date when available. Do not assume that withdrawal proves every claim false, and do not silently analyze a superseded version.
 - If paper, project page, and repository disagree, report the disagreement and date each source.
 - Treat a repository's current availability as current information, not evidence that an artifact existed when the paper was published.
 
@@ -42,6 +44,15 @@ Do not turn an author claim into a finding through confident paraphrase.
 - Check captions and surrounding discussion together.
 - When extraction loses a symbol, table cell, or figure panel, inspect the page image.
 - Do not report a number that cannot be read reliably.
+
+Use this fallback order for page images:
+
+1. Use the execution environment's native PDF page renderer or screenshot tool.
+2. Otherwise run `python3 <skill-dir>/scripts/render_pdf_pages.py PAPER.pdf --pages 3,7-8 --output-dir OUTPUT_DIR`.
+3. Start near 150 DPI. Re-render a page at 220 to 300 DPI when labels or table cells remain too small.
+4. Inspect the rendered image itself, then cross-check the caption and surrounding text.
+
+The helper uses PyMuPDF when installed and falls back to Poppler's `pdftoppm` and `pdfinfo`. If neither backend is available, state that visual verification could not be completed. OCR or extracted text may help locate a value, but it does not replace visual verification of a damaged table or equation.
 
 ## Check novelty
 

@@ -1,6 +1,6 @@
 {
   "name": "read-llm-papers",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Evidence-grounded five-minute reading reports for frontier LLM papers.",
   "author": {
     "name": "shengqiangtai",

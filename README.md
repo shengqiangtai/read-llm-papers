@@ -82,10 +82,19 @@ plugins/read-llm-papers/
 └── skills/read-llm-papers/
     ├── SKILL.md
     ├── agents/openai.yaml
-    └── references/
+    ├── references/
+    │   ├── comparison-contract.md
+    │   ├── deep-dive-contract.md
+    │   ├── evidence-rules.md
+    │   ├── example-report.md
+    │   ├── llm-paper-checklist.md
+    │   └── report-contract.md
+    └── scripts/
+        ├── fetch_daily_papers.py
+        └── render_pdf_pages.py
 ```
 
-The plugin is only a distribution wrapper. The complete reading workflow lives in `SKILL.md`, while detailed report and audit rules are loaded only when needed.
+The plugin is only a distribution wrapper. The complete reading workflow lives in `SKILL.md`, while detailed report and audit rules are loaded only when needed. The helper scripts fetch structured Daily Papers metadata and render selected PDF pages for visual verification.
 
 ## Validate changes
 

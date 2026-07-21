@@ -10,26 +10,29 @@ Turn a paper or a daily paper list into a decision-oriented, evidence-grounded r
 ## Choose the mode
 
 - Use **single-paper mode** by default for one paper, PDF, link, DOI, or title. Produce the five-minute report.
-- Use **daily-triage mode** when the user gives a Hugging Face Daily Papers page, a date, or several papers and asks what to read. Rank the list first. Deep-read only the requested papers or the best one to three.
-- Use **comparison mode** when the user asks how papers differ. Normalize problem setting, data, model scale, baselines, metrics, and compute before comparing results.
-- Use **deep-dive mode** only when the user explicitly asks for derivations, implementation details, appendix analysis, or a reproduction plan. Do not force the five-minute length limit in this mode.
+- Use **daily-triage mode** when the user gives a Hugging Face Daily Papers page, a date, or several papers and asks what to read. Rank the list first. Deep-read only the requested papers or the best one to three. Use the bundled structured-data helper when possible.
+- Use **comparison mode** when the user asks how papers differ. Normalize problem setting, data, model scale, baselines, metrics, and compute before comparing results. Read [comparison-contract.md](references/comparison-contract.md) before drafting.
+- Use **deep-dive mode** only when the user explicitly asks for derivations, implementation details, appendix analysis, or a reproduction plan. Read [deep-dive-contract.md](references/deep-dive-contract.md) and do not force the five-minute length limit.
 
 If the user states interests, current projects, hardware, or reading goals, use them when judging relevance. Otherwise assume a technically literate graduate student who wants current LLM research.
 
 ## Acquire reliable sources
 
 1. Resolve the exact paper identity. Record title, authors, date, version, venue status, and arXiv or DOI identifier. Do not merge similarly titled papers.
-2. Open the Hugging Face paper page when it is the entry point, then obtain the full paper from arXiv, OpenReview, the publisher, or the uploaded PDF.
-3. Prefer sources in this order:
+2. Check the official record for withdrawal, retraction, replacement, or errata notices. Put a material status warning near the top of the report and explain what changed.
+3. Open the Hugging Face paper page when it is the entry point, then obtain the full paper from arXiv, OpenReview, the publisher, or the uploaded PDF.
+4. Prefer sources in this order:
    - user-provided full paper
    - official paper HTML or PDF
    - official code, model, dataset, and project pages
    - author or institution pages
    - reputable secondary discussion
-4. Search for the official repository, released checkpoints, datasets, licenses, and later versions when these affect reproducibility or current relevance.
-5. Treat the full paper as the source of truth for technical claims. Treat repository documentation as the source of truth for current artifact availability.
+5. Search for the official repository, released checkpoints, datasets, licenses, and later versions when these affect reproducibility or current relevance.
+6. Treat the full paper as the source of truth for technical claims. Treat repository documentation as the source of truth for current artifact availability.
 
 If only an abstract or summary is accessible, produce an **abstract-level preview**. State the limitation near the top and omit unsupported experimental or implementation detail.
+
+If an explicitly requested paper is outside LLM or generative-AI research, say that the domain checklist does not apply. Continue with a general paper report using the parts of the report contract that still fit. Omit irrelevant LLM checks. When specialist knowledge is necessary to judge the evidence, label the critical assessment provisional rather than pretending domain expertise.
 
 Read [evidence-rules.md](references/evidence-rules.md) before analyzing a paper when sources conflict, the PDF is difficult to parse, or the answer will make strong novelty or performance claims.
 
@@ -57,9 +60,11 @@ Explain the mechanism causally. Define each new term at first use. Use equations
 
 For each major contribution, locate the exact experiment, ablation, figure, or analysis that supports it. Check whether the evidence establishes the claimed cause or only a correlation. Apply the domain checklist in [llm-paper-checklist.md](references/llm-paper-checklist.md).
 
-Inspect the actual page image when figure, table, or equation extraction appears incomplete. Do not infer a chart's values from a caption alone.
+Inspect the actual page image when figure, table, or equation extraction appears incomplete. Use a native page-image tool when available. Otherwise use [render_pdf_pages.py](scripts/render_pdf_pages.py) as described in the evidence rules. Do not infer a chart's values from a caption alone.
 
 ## Run daily triage
+
+Fetch the list from the public Hugging Face JSON endpoint with [fetch_daily_papers.py](scripts/fetch_daily_papers.py) when code execution and network access are available. This avoids missing entries or misparsing metadata. Fall back to the Daily Papers page when the endpoint or script is unavailable.
 
 Use the Hugging Face list only for first-pass selection. Do not treat upvotes as scientific quality.
 
@@ -72,6 +77,8 @@ Score each paper out of 100:
 | Evidence | 25 | Do the experiments appear broad, fair, and diagnostic? |
 | Usability | 20 | Are code, models, data, or actionable ideas available? |
 
+This default deliberately gives reproducibility and near-term use substantial weight. It is not an objective measure of scientific merit. If the user prioritizes originality, theory, or another goal, adjust the weights before scoring and show the revised weights.
+
 During triage, use title, abstract, metadata, and official artifacts. Mark the score as preliminary. Return a compact ranked table with one-line reasons and one of these actions:
 
 - **Deep read** for the most valuable papers
@@ -82,13 +89,19 @@ Then perform full-text analysis only for the selected papers. Avoid spending dee
 
 ## Write the report
 
-Read [report-contract.md](references/report-contract.md) and follow it for single-paper mode. Keep the default Chinese report around 1,200 to 1,800 Chinese characters, excluding the source list. Prefer a few dense sections over many shallow headings.
+For single-paper mode, read [report-contract.md](references/report-contract.md) and [example-report.md](references/example-report.md) before drafting. Use the example as a format and evidence-density anchor, not as reusable paper content.
+
+Write in the user's language. For a Chinese request, keep the default report around 1,200 to 1,800 Chinese characters. For an English request, keep it around 700 to 900 English words. Count only the report body, not the source list. Follow an explicit user length request instead. For another language, use a similar five-minute reading density.
+
+Prefer a few dense sections over many shallow headings.
 
 Use a compact table only when exact comparisons are easier to understand in rows. Explain the core method as a short sequence or a small diagram only when the structure truly benefits from it.
 
-Write in the user's language. Keep established English names after their first Chinese explanation when this helps later searching.
+Keep established English names after their first translated explanation when this helps later searching.
 
 ## Compare papers fairly
+
+Follow [comparison-contract.md](references/comparison-contract.md) for the output structure.
 
 Before comparing scores, align:
 
